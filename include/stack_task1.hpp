@@ -11,9 +11,9 @@ class Stack {
  public:
   Stack() : stack_p(new T[16]), stack_head(0), stack_size(16) {}
   Stack(Stack&& stack) {
-    stack_head = stack.m_head;
+    stack_head = stack.stack_head;
     stack_p = stack.stack_p;
-    stack_size = stack.m_stackSize;
+    stack_size = stack.stack_size;
     stack.stack_p = nullptr;
   };
   Stack(const Stack&) = delete;
