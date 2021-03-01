@@ -2,48 +2,63 @@
 #include "cstring"
 #include "iostream"
 template <typename T>
-class Stack {
+class HStack {
  public:
-  Stack() : m_memp(new T[16]), m_head(0), m_stackSize(16) {}
-  Stack(Stack&&){};
+  HStack() : stack_p(new T[16]), stack_head(0), stack_size(16) {}
+  HStack(HStack&& stack){
+    stack_head = stack.stack_head;
+    stack_p = stack.stack_p;
+    stack_size = stack.stack_size;
+    stack.m_memp = nullptr;
+  };
   template <typename... Args>
-  void push_emplace(Args&&... value) {
-    if (m_head == m_stackSize) {
-      T* tmp = new T[m_stackSize * 2];
+  void push_emplace(Args&&... value) { //пушэнплэйс инициализируем объекст на вершине стэка
+    if (stack_head == stack_size) {  //передает аргумент в конструктор тип аргумента(передаю 5 он передает в конструктор типа инт)
+      T* tmp = new T[stack_size * 2];
       if (tmp != nullptr) {
-        std::memcpy(tmp, m_memp, m_stackSize * sizeof(T));
-        m_stackSize = m_stackSize * 2;
+        std::memcpy(tmp, stack_p, stack_size * sizeof(T));
+        stack_size = stack_size * 2;
+        delete[]stack_p;
+        stack_p = tmp;
       } else {
         throw "No memory for element";
       }
     }
-    m_memp[m_head] = T(value...);
-    m_head += 1;
+    stack_p[stack_head] = T(value...); //последний элмент становится равным переменной инициализированной конструктором типа этой переменной
+    stack_head += 1;
   }
   void push(T&& value) {
-    if (m_head == m_stackSize) {
-      T* tmp = new T[m_stackSize * 2];
+    if (stack_head == stack_size) {
+      T* tmp = new T[stack_size * 2];
       if (tmp != nullptr) {
-        std::memcpy(tmp, m_memp, m_stackSize * sizeof(T));
-        m_stackSize = m_stackSize * 2;
+        std::memcpy(tmp, stack_p, stack_size * sizeof(T));
+        stack_size = stack_size * 2;
+        delete[]stack_p;
+        stack_p = tmp;
       } else {
         throw "No memory for element";
       }
     }
-    m_memp[m_head] = std::move(value);
-    m_head += 1;
+    stack_p[stack_head] = std::move(value);
+    stack_head += 1;
   };
-  const T& head() const { return m_memp[m_head + 1]; };
-  T pop() {
-    if (m_stackSize == 0) {
-      throw "Stack is empty";
+  const T& head() const {
+    if (stack_head == 0) {
+      throw std::out_of_range{"Stack is empty"};
     }
-    return m_memp[--m_head];
+    return stack_p[stack_head - 1];
   };
-  ~Stack() { delete[] m_memp; }
+  T pop() { //поп возвращает ужаленный элемент
+    if (stack_head == 0) {
+      throw std::out_of_range{"Empty array"};
+    }
+    stack_head -= 1;
+    return stack_p[stack_head];
+  };
+  ~HStack() { delete[] stack_p; }
 
  private:
-  T* m_memp;        // start
-  int m_head;       // index peak of stack
-  int m_stackSize;  //
+  T* stack_p;        // start
+  int stack_head;       // index peak of stack
+  int stack_size;  //
 };
