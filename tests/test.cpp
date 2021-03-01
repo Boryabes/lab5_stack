@@ -46,4 +46,3 @@ TEST(simpleStack, pop) {
   stackObj.pop();
   ASSERT_EQ(stackObj.head(), 3);
 }
-
