@@ -12,8 +12,8 @@ class HStack {
     stack.m_memp = nullptr;
   };
   template <typename... Args>
-  void push_emplace(Args&&... value) { //пушэнплэйс инициализируем объекст на вершине стэка
-    if (stack_head == stack_size) {  //передает аргумент в конструктор тип аргумента(передаю 5 он передает в конструктор типа инт)
+  void push_emplace(Args&&... value) {
+    if (stack_head == stack_size) {
       T* tmp = new T[stack_size * 2];
       if (tmp != nullptr) {
         std::memcpy(tmp, stack_p, stack_size * sizeof(T));
@@ -24,7 +24,7 @@ class HStack {
         throw "No memory for element";
       }
     }
-    stack_p[stack_head] = T(value...); //последний элмент становится равным переменной инициализированной конструктором типа этой переменной
+    stack_p[stack_head] = T(value...);
     stack_head += 1;
   }
   void push(T&& value) {
@@ -48,7 +48,7 @@ class HStack {
     }
     return stack_p[stack_head - 1];
   };
-  T pop() { //поп возвращает ужаленный элемент
+  T pop() {
     if (stack_head == 0) {
       throw std::out_of_range{"Empty array"};
     }
@@ -58,7 +58,7 @@ class HStack {
   ~HStack() { delete[] stack_p; }
 
  private:
-  T* stack_p;        // start
-  int stack_head;       // index peak of stack
-  int stack_size;  //
+  T* stack_p;
+  int stack_head;
+  int stack_size;
 };
