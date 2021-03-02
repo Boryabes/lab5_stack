@@ -9,7 +9,7 @@ class HStack {
     stack_head = stack.stack_head;
     stack_p = stack.stack_p;
     stack_size = stack.stack_size;
-    stack.m_memp = nullptr;
+    stack.stack.p = nullptr;
   };
   template <typename... Args>
   void push_emplace(Args&&... value) {
