@@ -16,7 +16,7 @@ TEST(stack_task1, constrWithNoArgument) {
 
 
 TEST(stackTask1, moveable1) {
-  ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
+  ASSERT_EQ(std::is_move_constructible_v<Stack<int>>,true);
 }
 
 
@@ -71,15 +71,15 @@ TEST(stackTask1, pushEmplace) {
 }
 
 TEST(stackTask1, uncopy) {
-  ASSERT_EQ(std::is_copy_constructible_v<Stack<int>,false);
+  ASSERT_EQ(std::is_copy_constructible_v<Stack<int>>,false);
 }
 
 TEST(stackTask1, uncopy2) {
-  ASSERT_EQ(std::is_copy_assignable_v<Stack<int>,false);
+  ASSERT_EQ(std::is_copy_assignable_v<Stack<int>>,false);
 }
 
 TEST(stackTask1, moveable2) {
-  ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
+  ASSERT_EQ(std::is_move_constructible_v<Stack<int>>,true);
 }
 
 TEST(stackTask2, push) {
@@ -121,18 +121,18 @@ TEST(stackTask2, constr) {
   ASSERT_EQ(stack.head(), 8);
 }
 TEST(stackTask2, moveable1) {
-  ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
+  ASSERT_EQ(std::is_move_constructible_v<HStack<int>>,true);
 }
 
 
 TEST(stackTask2, uncopy) {
-  ASSERT_EQ(std::is_copy_constructible_v<HStack<int>,false);
+  ASSERT_EQ(std::is_copy_constructible_v<HStack<int>>,false);
 }
 
 TEST(stackTask2, uncopy2) {
-  ASSERT_EQ(std::is_copy_assignable_v<HStack<int>,false);
+  ASSERT_EQ(std::is_copy_assignable_v<HStack<int>>,false);
 }
 
 TEST(stackTask2, moveable2) {
-  ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
+  ASSERT_EQ(std::is_move_constructible_v<HStack<int>>,true);
 }
