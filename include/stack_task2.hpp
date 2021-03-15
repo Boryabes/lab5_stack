@@ -1,7 +1,7 @@
 // Copyright 2020 BoryaBes <box.bern@yandex.ru>
 #include "cstring"
 #include "iostream"
-#include "string"
+#include "utility"
 #define INCLUDE_STACK_TASK2_HPP_
 template <typename T>
 class HStack {
