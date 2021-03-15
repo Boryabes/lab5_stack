@@ -1,5 +1,4 @@
 // Copyright 2020 BoryaBes <box.bern@yandex.ru>
-
 #include <gtest/gtest.h>
 #include "stack_task1.hpp"
 #include "iostream"
