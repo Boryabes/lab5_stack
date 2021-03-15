@@ -1,14 +1,12 @@
 // Copyright 2020 BoryaBes <box.bern@yandex.ru>
 
 #include <gtest/gtest.h>
-
 #include "iostream"
 #include "stack_task1.hpp"
 #include <gtest/gtest.h>
 #include "stack_task1.hpp"
 #include "iostream"
 #include "stack_task2.hpp"
-
 
 TEST(simpleStack, constrWithNoArgument) {
   Stack<int> stackObj;
