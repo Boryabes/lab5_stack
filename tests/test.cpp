@@ -15,20 +15,19 @@ TEST(stack_task1, constrWithNoArgument) {
 }
 
 
-
-TEST(stack_task1, moveable1) {
+TEST(stackTask1, moveable1) {
   ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
 }
 
 
-TEST(stack_task1, pushRValue) {
+TEST(stackTask1, pushRValue) {
   Stack<int> stackObj;
   stackObj.push(std::move(8));
   stackObj.push(std::move(4));
   ASSERT_EQ(stackObj.head(), 4);
 }
 
-TEST(stack_task1, pushLValue) {
+TEST(stackTask1, pushLValue) {
   Stack<int> stackObj;
   int k = 3;
   int a = 18;
@@ -37,7 +36,7 @@ TEST(stack_task1, pushLValue) {
   ASSERT_EQ(stackObj.head(), 18);
 }
 
-TEST(stack_task1, pop) {
+TEST(stackTask1, pop) {
   Stack<int> stackObj;
   int k = 3;
   int a = 18;
@@ -47,17 +46,17 @@ TEST(stack_task1, pop) {
   ASSERT_EQ(stackObj.head(), 3);
 }
 
-TEST(stack_task1, popEmpty) {
+TEST(stackTask1, popEmpty) {
   Stack<int> stackObj;
   ASSERT_THROW(stackObj.pop(), std::out_of_range);
 }
 
-TEST(stack_task1, headEmpty) {
+TEST(stackTask1, headEmpty) {
   Stack<int> stackObj;
   ASSERT_THROW(stackObj.head(), std::out_of_range);
 }
 
-TEST(stack_task1, stackExpansion) {
+TEST(stackTask1, stackExpansion) {
   Stack<int> stackObj;
   for (int i=0;i<30;++i){
     stackObj.push(std::move(i));
@@ -65,31 +64,31 @@ TEST(stack_task1, stackExpansion) {
   ASSERT_EQ(stackObj.head(), 29);
 }
 
-TEST(stack_task2, pushEmplace) {
+TEST(stackTask1, pushEmplace) {
   HStack<int> stackObj;
   stackObj.push_emplace(4);
   ASSERT_EQ(stackObj.head(), 4);
 }
 
-TEST(simpleStack, uncopy) {
+TEST(stackTask1, uncopy) {
   ASSERT_EQ(std::is_copy_constructible_v<Stack<int>,false);
 }
 
-TEST(simpleStack, uncopy2) {
+TEST(stackTask1, uncopy2) {
   ASSERT_EQ(std::is_copy_assignable_v<Stack<int>,false);
 }
 
-TEST(simpleStack, moveable2) {
+TEST(stackTask1, moveable2) {
   ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
 }
 
-TEST(stack_task2, push) {
+TEST(stackTask2, push) {
   HStack<int> stackObj;
   stackObj.push(9);
   ASSERT_EQ(stackObj.head(), 9);
 }
 
-TEST(stack_task2, pop) {
+TEST(stackTask2, pop) {
   HStack<int> stackObj;
   stackObj.push(9);
   stackObj.push(4);
@@ -97,17 +96,17 @@ TEST(stack_task2, pop) {
   ASSERT_EQ(stackObj.head(), 9);
 }
 
-TEST(stack_task2, headEmpty) {
+TEST(stackTask2, headEmpty) {
   HStack<int> stackObj;
   ASSERT_THROW(stackObj.head(), std::out_of_range);
 }
 
-TEST(stack_task2, popEmptyStack) {
+TEST(stackTask2, popEmptyStack) {
   HStack<int> stackObj;
   ASSERT_THROW(stackObj.pop(), std::out_of_range);
 }
 
-TEST(stack_task2, stackExpansion) {
+TEST(stackTask2, stackExpansion) {
   HStack<int> stackObj;
   for (int i=0;i<31;++i){
     stackObj.push(std::move(i));
@@ -115,25 +114,25 @@ TEST(stack_task2, stackExpansion) {
   ASSERT_EQ(stackObj.head(), 30);
 }
 
-TEST(stack_task2, constr) {
+TEST(stackTask2, constr) {
   HStack<int> stackObj;
   stackObj.push(8);
   HStack<int> stack = HStack(std::move(stackObj));
   ASSERT_EQ(stack.head(), 8);
 }
-TEST(stack_task2, moveable1) {
+TEST(stackTask2, moveable1) {
   ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
 }
 
 
-TEST(stack_task2, uncopy) {
+TEST(stackTask2, uncopy) {
   ASSERT_EQ(std::is_copy_constructible_v<HStack<int>,false);
 }
 
-TEST(stack_task2, uncopy2) {
+TEST(stackTask2, uncopy2) {
   ASSERT_EQ(std::is_copy_assignable_v<HStack<int>,false);
 }
 
-TEST(stack_task2, moveable2) {
+TEST(stackTask2, moveable2) {
   ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
 }
