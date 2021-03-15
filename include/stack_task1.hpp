@@ -68,4 +68,4 @@ class Stack {
   int stack_head;
   int stack_size;
 };
-#endif  // INCLUDE_HEADER_HPP_
+#endif  // INCLUDE_STACK_TASK1_HPP_

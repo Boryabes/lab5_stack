@@ -2,6 +2,7 @@
 #include "cstring"
 #include "iostream"
 #include "utility"
+#ifndef INCLUDE_STACK_TASK2_HPP_
 #define INCLUDE_STACK_TASK2_HPP_
 template <typename T>
 class HStack {
@@ -64,3 +65,4 @@ class HStack {
   int stack_head;
   int stack_size;
 };
+#endif  // INCLUDE_STACK_TASK2_HPP_
