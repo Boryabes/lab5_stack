@@ -1,6 +1,7 @@
 // Copyright 2020 BoryaBes <box.bern@yandex.ru>
 #include "cstring"
 #include "iostream"
+#define INCLUDE_STACK_TASK2_HPP_
 template <typename T>
 class HStack {
  public:
@@ -10,7 +11,7 @@ class HStack {
     stack_p = stack.stack_p;
     stack_size = stack.stack_size;
     stack.stack_p = nullptr;
-  };
+  }
   template <typename... Args>
   void push_emplace(Args&&... value) {
     if (stack_head == stack_size) {
@@ -41,20 +42,20 @@ class HStack {
     }
     stack_p[stack_head] = std::move(value);
     stack_head += 1;
-  };
+  }
   const T& head() const {
     if (stack_head == 0) {
       throw std::out_of_range{"Stack is empty"};
     }
     return stack_p[stack_head - 1];
-  };
+  }
   T pop() {
     if (stack_head == 0) {
       throw std::out_of_range{"Empty array"};
     }
     stack_head -= 1;
     return stack_p[stack_head];
-  };
+  }
   ~HStack() { delete[] stack_p; }
 
  private:

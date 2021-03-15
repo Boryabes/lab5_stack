@@ -1,9 +1,8 @@
 // Copyright 2020 BoryaBes <box.bern@yandex.ru>
 #include <cstring>
 #include <utility>
-
 #include "iostream"
-#ifndef INCLUDE_HEADER_HPP_
+#ifndef INCLUDE_STACK_TASK1_HPP_
 #define INCLUDE_HEADER_HPP_
 
 template <typename T>
@@ -15,7 +14,7 @@ class Stack {
     stack_p = stack.stack_p;
     stack_size = stack.stack_size;
     stack.stack_p = nullptr;
-  };
+  }
   Stack(const Stack&) = delete;
 
   void push(T&& value) {
@@ -32,7 +31,7 @@ class Stack {
     }
     stack_p[stack_head] = std::move(value);
     stack_head += 1;
-  };
+  }
 
   void push(const T& value) {
     if (stack_head == stack_size) {
@@ -48,19 +47,20 @@ class Stack {
     }
     stack_p[stack_head] = value;
     stack_head += 1;
-  };
+  }
+
   void pop() {
     if (stack_head == 0) {
       throw std::out_of_range{"Empty stack"};
     }
     stack_head -= 1;
-  };
+  }
   const T& head() const {
     if (stack_head == 0) {
       throw std::out_of_range{"Stack is empty"};
     }
     return stack_p[stack_head - 1];
-  };
+  }
   ~Stack() { delete[] stack_p; }
 
  private:
@@ -68,5 +68,4 @@ class Stack {
   int stack_head;
   int stack_size;
 };
-
 #endif  // INCLUDE_HEADER_HPP_
