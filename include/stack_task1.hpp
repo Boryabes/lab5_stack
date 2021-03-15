@@ -2,7 +2,8 @@
 #include <cstring>
 #include <utility>
 #include "iostream"
-
+#ifndef INCLUDE_STACK_TASK1_HPP_
+#define INCLUDE_STACK_TASK1_HPP_
 
 template <typename T>
 class Stack {
