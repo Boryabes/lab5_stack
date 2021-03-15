@@ -1,4 +1,3 @@
-// Copyright 2020 BoryaBes <box.bern@yandex.ru>
 #include <gtest/gtest.h>
 #include "stack_task1.hpp"
 #include "iostream"
@@ -14,12 +13,12 @@ TEST(simpleStack, constrWithNoArgument) {
   ASSERT_EQ(stackObj.head(), 10);
 }
 
-
-
-TEST(simpleStack, moveable1) {
-  ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
+TEST(simpleStack, constrWithRValue) {
+  Stack<int> stackObj;
+  stackObj.push(8);
+  Stack<int> stack = Stack(std::move(stackObj));
+  ASSERT_EQ(stack.head(), 8);
 }
-
 
 TEST(simpleStack, pushRValue) {
   Stack<int> stackObj;
@@ -71,18 +70,6 @@ TEST(hardStack, pushEmplace) {
   ASSERT_EQ(stackObj.head(), 4);
 }
 
-TEST(simpleStack, uncopy) {
-  ASSERT_EQ(std::is_copy_constructible_v<Stack<int>,false);
-}
-
-TEST(simpleStack, uncopy2) {
-  ASSERT_EQ(std::is_copy_assignable_v<Stack<int>,false);
-}
-
-TEST(simpleStack, moveable2) {
-  ASSERT_EQ(std::is_move_constructible_v<Stack<int>,true);
-}
-
 TEST(hardStack, push) {
   HStack<int> stackObj;
   stackObj.push(9);
@@ -120,20 +107,4 @@ TEST(hardStack, constr) {
   stackObj.push(8);
   HStack<int> stack = HStack(std::move(stackObj));
   ASSERT_EQ(stack.head(), 8);
-}
-TEST(hardStack, moveable1) {
-  ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
-}
-
-
-TEST(hardStack, uncopy) {
-  ASSERT_EQ(std::is_copy_constructible_v<HStack<int>,false);
-}
-
-TEST(hardStack, uncopy2) {
-  ASSERT_EQ(std::is_copy_assignable_v<HStack<int>,false);
-}
-
-TEST(hardStack, moveable2) {
-  ASSERT_EQ(std::is_move_constructible_v<HStack<int>,true);
 }
